@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+
+<suite name="mongojdbc" >
+
+  <test name="main tests">
+    <classes>
+      <class name="com.mongodb.jdbc.BasicTest"/>
+      <class name="com.mongodb.jdbc.MongoResultSetTest"/>
+      <class name="com.mongodb.jdbc.MongoConnectionTest"/>
+      <class name="com.mongodb.jdbc.DriverTest"/>
+    </classes>
+  </test>
+
+</suite>
+

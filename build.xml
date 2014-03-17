@@ -1,0 +1,130 @@
+<?xml version='1.0'?>
+<project name="MongoJDBC" default="compile" basedir=".">
+
+  <property name="version" value="0.1"/>
+
+  <path id="classpath">
+    <fileset dir="lib">
+      <include name="**/*.jar"/>
+    </fileset>
+    <pathelement path="conf" />
+    <pathelement path="build/main" />
+    <pathelement path="build/test" />
+    <pathelement path="build/examples" />
+  </path>
+
+  <target name="init">
+    <mkdir dir="build" />
+    <mkdir dir="build/main" />
+    <mkdir dir="build/test" />
+    <mkdir dir="build/examples" />
+  </target>
+
+  <target name="clean">
+    <delete dir="build"/>
+  </target>
+
+  <target name="compile" depends="init">
+
+    <javac srcdir="src/main"
+           destdir="build/main"
+           optimize="off"
+           deprecation="off"
+           source="1.5"
+           target="1.5"
+           encoding="ISO-8859-1"
+           memoryMaximumSize="256M"
+           fork="true"
+           debug="on" >
+      <classpath refid="classpath"/>
+    </javac>
+
+    <javac srcdir="src/test"
+           destdir="build/test"
+           optimize="off"
+           deprecation="off"
+           source="1.5"
+           encoding="ISO-8859-1"
+           debug="on" >
+      <classpath refid="classpath"/>
+    </javac>
+
+  </target>
+
+  <target name="jar" depends="compile" description="Create jdbc jar">
+
+    <exec executable="git" output="build/main/git-hash">
+      <arg value="log" />
+      <arg value="--pretty=format:%H" />
+      <arg value="-1" />
+    </exec>
+
+    <jar jarfile="mongojdbc.jar" >
+      <fileset dir="build/main" />
+    </jar>
+  </target>
+
+  <target name="zip" description="create zip">
+
+    <tstamp>  
+      <format property="timenow" pattern="yyyyMMdd" />  
+    </tstamp>  
+
+    <exec executable="git">
+      <arg value="archive" />
+
+      <arg value="--format" />
+      <arg value="zip" />
+
+      <arg value="--output" />
+      <arg value="mongo-jdbc-${timenow}.zip" />
+      
+      <arg value="--prefix" />
+      <arg value="mongo-jdbc-${timenow}/" />
+
+      <arg value="master" />
+    </exec>
+
+  </target>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - -->
+  <!--  test stuff                               -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - -->
+
+  <taskdef name="testng"
+           classpathref="classpath"
+           classname="org.testng.TestNGAntTask"
+           >
+  </taskdef>
+
+  <target name="test" depends="compile">
+    <testng classpathref="classpath" outputdir="testoutput" listeners="com.mongodb.util.TestNGListener" haltonfailure="true" >
+      <jvmarg value="-Xmx512M" />
+      <xmlfileset dir="." includes="testng.xml"/>
+    </testng>
+  </target>
+
+  <target name="examples" depends="compile">
+
+    <javac srcdir="examples"
+           destdir="build/examples"
+           optimize="off"
+           deprecation="off"
+           source="1.5"
+           encoding="ISO-8859-1"
+           debug="on" >
+      <classpath refid="classpath"/>
+    </javac>
+
+    <java classname="first">
+      <classpath refid="classpath"/>
+    </java>
+
+    <java classname="blog">
+      <classpath refid="classpath"/>
+    </java>
+
+
+  </target>
+
+</project>

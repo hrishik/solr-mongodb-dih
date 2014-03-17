@@ -1,0 +1,10 @@
+<dataConfig>    
+	<dataSource name="mongod" type="JdbcDataSource" driver="com.mongodb.jdbc.MongoDriver" url="mongodb://localhost/exampledb"/>
+	<document>
+    <entity name="nameage" dataSource="mongod" query="select name, price from grocery">
+        <field column="name" name="name"/>
+        <field column="name" name="id"/> 
+        <!-- other fileds -->
+    </entity>
+	</document>	
+</dataConfig>
