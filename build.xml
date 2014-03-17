@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <project name="MongoJDBC" default="compile" basedir=".">
 
-  <property name="version" value="0.1"/>
+  <!--property name="version" value="0.1"/-->
 
   <path id="classpath">
     <fileset dir="lib">
@@ -29,9 +29,8 @@
     <javac srcdir="src/main"
            destdir="build/main"
            optimize="off"
-           deprecation="off"
-           source="1.5"
-           target="1.5"
+           
+           
            encoding="ISO-8859-1"
            memoryMaximumSize="256M"
            fork="true"
@@ -42,8 +41,8 @@
     <javac srcdir="src/test"
            destdir="build/test"
            optimize="off"
-           deprecation="off"
-           source="1.5"
+           
+           
            encoding="ISO-8859-1"
            debug="on" >
       <classpath refid="classpath"/>
@@ -59,7 +58,7 @@
       <arg value="-1" />
     </exec>
 
-    <jar jarfile="mongojdbc.jar" >
+    <jar jarfile="mongo-jdbc-dih.jar" >
       <fileset dir="build/main" />
     </jar>
   </target>
@@ -100,7 +99,7 @@
   <target name="test" depends="compile">
     <testng classpathref="classpath" outputdir="testoutput" listeners="com.mongodb.util.TestNGListener" haltonfailure="true" >
       <jvmarg value="-Xmx512M" />
-      <xmlfileset dir="." includes="testng.xml"/>
+      <xmlfileset dir="." includes="testing.xml"/>
     </testng>
   </target>
 
@@ -109,8 +108,8 @@
     <javac srcdir="examples"
            destdir="build/examples"
            optimize="off"
-           deprecation="off"
-           source="1.5"
+           
+           
            encoding="ISO-8859-1"
            debug="on" >
       <classpath refid="classpath"/>
