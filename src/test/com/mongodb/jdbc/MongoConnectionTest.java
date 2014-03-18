@@ -1,5 +1,4 @@
 // MongoConnectionTest.java
-
 package com.mongodb.jdbc;
 
 import java.util.*;

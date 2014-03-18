@@ -1,4 +1,5 @@
 <?xml version='1.0'?>
+
 <project name="MongoJDBC" default="compile" basedir=".">
 
   <path id="classpath">

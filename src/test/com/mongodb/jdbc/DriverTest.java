@@ -1,5 +1,4 @@
 // DriverTest.java
-
 package com.mongodb.jdbc;
 
 import java.sql.*;

@@ -1,6 +1,5 @@
 // first.java
 import java.sql.*;
-
 public class first {
 
     static void print( String name , ResultSet res )

@@ -1,5 +1,4 @@
 // Base.java
-
 package com.mongodb.jdbc;
 
 import com.mongodb.*;

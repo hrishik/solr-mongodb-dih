@@ -1,4 +1,5 @@
 <!-- sample config -->
+
 <dataConfig>    
 	<dataSource name="mongod" type="JdbcDataSource" driver="com.mongodb.jdbc.MongoDriver" url="mongodb://localhost/exampledb"/>
 	<document>
