@@ -1,5 +1,4 @@
 // MongoResultSet.java
-
 /**
  *      Copyright (C) 2008 10gen Inc.
  *
@@ -15,7 +14,6 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-
 package com.mongodb.jdbc;
 
 import java.io.*;

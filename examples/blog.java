@@ -1,5 +1,4 @@
 // blog.java
-
 import java.sql.*;
 
 import com.mongodb.jdbc.*;

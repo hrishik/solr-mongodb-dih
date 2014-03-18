@@ -1,8 +1,6 @@
 <?xml version='1.0'?>
 <project name="MongoJDBC" default="compile" basedir=".">
 
-  <!--property name="version" value="0.1"/-->
-
   <path id="classpath">
     <fileset dir="lib">
       <include name="**/*.jar"/>
